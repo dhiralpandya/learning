@@ -10,7 +10,7 @@ public class UniqueStringExample {
 	 */
 	public static void main(String args[]) {
 
-		System.out.println(isStringHasAllUniqueChar("abc"));
+		System.out.println(isStringHasAllUniqueChar("abccc"));
 
 	}
 

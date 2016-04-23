@@ -51,15 +51,4 @@ public class WaterGlass {
 		}
 	}
 
-	public static void printMatrix(String[][] i) {
-		for (String[] p : i) {
-			for (String px : p) {
-
-				System.out.print(px + "  ");
-
-			}
-			System.out.println();
-		}
-	}
-
 }

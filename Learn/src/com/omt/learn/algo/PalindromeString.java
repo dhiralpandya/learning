@@ -6,7 +6,7 @@ public class PalindromeString {
 
 	public static void main(String args[]) {
 		// isPalindrome("abaxbabax", 2);
-		String s = "())[]][]([]()]]()]]]";// "abaxbababxa";
+		String s = "abaxbababxa";
 		String s2 = StringUtils.reverse(s);
 		editDistanceMethod(s, s2, 2);
 	}

@@ -16,9 +16,9 @@ public class IsValidIMEI {
 		// System.out.println(imei);
 		// }
 
-		System.out.println(isValidIMEI("352044076515222"));
+		// System.out.println(isValidIMEI("352044076515222"));
 
-		// generateValidIMEIs(4);
+		generateValidIMEIs(100);
 		// }
 	}
 
@@ -50,9 +50,11 @@ public class IsValidIMEI {
 			// System.out.println("Last T:" + lastI);
 
 			// imei += imei + new String((10 - lastI));
-
-			System.out.println(imei + (10 - lastI));
-
+			if (lastI > 0) {
+				System.out.println(imei + (10 - lastI));
+			} else {
+				System.out.println(imei + "0");
+			}
 		}
 
 	}

@@ -77,7 +77,6 @@ public class WordBreakProblem {
 		printMatrix(matrix);
 		printMatrix(flags);
 
-		int pointer = 0;
 		int i = 0;
 
 		while (i < size) {

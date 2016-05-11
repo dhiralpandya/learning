@@ -1,4 +1,4 @@
-package com.omt.learn;
+package com.omt.learn.algo;
 
 import java.util.ArrayList;
 import java.util.List;

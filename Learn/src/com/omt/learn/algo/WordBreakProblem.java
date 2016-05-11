@@ -39,9 +39,8 @@ public class WordBreakProblem {
 		boolean[][] matrix = new boolean[size][size];
 		Integer[][] flags = new Integer[size][size];
 
-		// int l = 0;
 		for (int l = 1; l <= size; l++) {
-			// l++;
+
 			for (int j = 0; j < size; j++) {
 
 				if ((l + j) <= size) {

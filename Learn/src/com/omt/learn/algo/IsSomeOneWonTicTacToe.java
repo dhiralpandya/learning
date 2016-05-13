@@ -25,6 +25,8 @@ public class IsSomeOneWonTicTacToe {
 		int bottom = 1;
 		int left = 1;
 		int right = 1;
+		int topLeft = 1;
+		int topRight = 1;
 
 		for (int i = 1; i < 3; i++) {
 			if (game[0][i] == game[0][i - 1]) {
@@ -40,23 +42,18 @@ public class IsSomeOneWonTicTacToe {
 			if (game[i][2] == game[i - 1][2]) {
 				right++;
 			}
-			if (top == 3 || left == 3 || right == 3 || bottom == 3) {
-				return true;
-			}
-		}
-
-		int topLeft = 1;
-		int topRight = 1;
-		for (int i = 1; i < 3; i++) {
 			if (game[i][i] == game[i - 1][i - 1]) {
 				topLeft++;
 			}
+
 			if (game[i][2 - i] == game[i - 1][2 - i + 1]) {
 				topRight++;
 			}
-			if (topLeft == 3 || topRight == 3) {
+
+			if (topLeft == 3 || topRight == 3 || top == 3 || left == 3 || right == 3 || bottom == 3) {
 				return true;
 			}
+
 		}
 
 		return false;

@@ -80,7 +80,7 @@ public class WordBreakProblem {
 		int i = 0;
 
 		while (i < size) {
-			;
+
 			Integer point = flags[i][size - 1];
 			if (point != null) {
 

@@ -5,7 +5,7 @@ public class RotateImage {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		int n = 3;
+		int n = 5;
 		int[][] image = new int[n][n];
 
 		int count = 1;
@@ -16,7 +16,7 @@ public class RotateImage {
 		}
 		printImage(image);
 
-		rotate(image);
+		rotateMatrix90(image);
 		System.out.println("--------");
 		printImage(image);
 
@@ -61,6 +61,27 @@ public class RotateImage {
 				img[count - o][k] = img[count][count - o];
 				img[count][count - o] = img[j][count];
 				img[j][count] = temp;
+			}
+
+		}
+
+	}
+
+	public static void rotateMatrix90(int[][] matrix) {
+
+		int n = matrix.length;
+		int size = n - 1;
+
+		for (int i = 0; i < n / 2; i++) {
+
+			for (int j = 0; j < Math.ceil(n / 2.0); j++) {
+
+				int temp = matrix[i][j];
+				matrix[i][j] = matrix[size - j][i];
+				matrix[size - j][i] = matrix[size - i][size - j];
+				matrix[size - i][size - j] = matrix[j][size - i];
+				matrix[j][size - i] = temp;
+
 			}
 
 		}

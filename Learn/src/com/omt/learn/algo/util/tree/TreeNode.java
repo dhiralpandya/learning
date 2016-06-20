@@ -24,7 +24,7 @@ public class TreeNode {
 		setParent();
 	}
 
-	private void setParent() {
+	protected void setParent() {
 		if (leftNode != null) {
 			leftNode.parentNode = this;
 		}

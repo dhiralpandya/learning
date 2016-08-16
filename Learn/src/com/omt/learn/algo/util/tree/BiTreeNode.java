@@ -10,6 +10,10 @@ public class BiTreeNode extends TreeNode {
 		super(name);
 	}
 
+	public BiTreeNode(String name, int value) {
+		super(name, value);
+	}
+
 	public void addBiTreeNode(BiTreeNode node) {
 		setBinaryNode(this, node);
 	}

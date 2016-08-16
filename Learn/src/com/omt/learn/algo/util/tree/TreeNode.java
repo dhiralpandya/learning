@@ -17,6 +17,11 @@ public class TreeNode {
 		nodeName = name;
 	}
 
+	public TreeNode(String name, int value) {
+		this(name);
+		this.value = value;
+	}
+
 	public TreeNode(TreeNode left, TreeNode right, String name) {
 		leftNode = left;
 		rightNode = right;

@@ -21,6 +21,10 @@ public class Node {
 		return getState() == State.VISITED;
 	}
 
+	public boolean isUnvisited() {
+		return getState() == State.UNVISITED;
+	}
+
 	public boolean isFoundAlready() {
 		return getState() == State.FOUND;
 	}

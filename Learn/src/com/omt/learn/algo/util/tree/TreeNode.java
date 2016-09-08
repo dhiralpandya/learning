@@ -17,6 +17,11 @@ public class TreeNode {
 		nodeName = name;
 	}
 
+	public TreeNode(String name, int value) {
+		this(name);
+		this.value = value;
+	}
+
 	public TreeNode(TreeNode left, TreeNode right, String name) {
 		leftNode = left;
 		rightNode = right;
@@ -24,7 +29,7 @@ public class TreeNode {
 		setParent();
 	}
 
-	private void setParent() {
+	protected void setParent() {
 		if (leftNode != null) {
 			leftNode.parentNode = this;
 		}

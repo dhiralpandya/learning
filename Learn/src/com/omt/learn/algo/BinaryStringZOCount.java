@@ -4,7 +4,7 @@ public class BinaryStringZOCount {
 
 	public static void main(String[] args) {
 
-		String s = "100001100";
+		String s = "000111000";
 		System.out.println("Count:" + validCount(s));
 
 	}

@@ -12,7 +12,8 @@ public class BSTFromArray {
 
     public static void main(String args[]) {
 
-        int a[] = {1, 5, 4, 2, 6, 3, 8, 7};
+        //int a[] = {1, 5, 4, 2, 6, 3, 8, 7};
+        int a[] = {1, 3, 4, 2};
 
         TreeNode tn = generateBST(a);
 
@@ -23,7 +24,7 @@ public class BSTFromArray {
 
     private static TreeNode generateBST(int a[]) {
         Arrays.sort(a);
-        return generateBST(a, 0, a.length);
+        return generateBST(a, 1, a.length);
     }
 
     private static TreeNode generateBST(int a[], int start, int end) {

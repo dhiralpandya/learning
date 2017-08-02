@@ -7,6 +7,7 @@ public class Node {
 
 	private List<Node> adjacent = new ArrayList<>();
 	private String vertex = "";
+	private int nodeId = -1;
 	private State state = State.UNVISITED;
 
 	public Node(String vertex) {
@@ -44,5 +45,15 @@ public class Node {
 	public String getVertex() {
 		return vertex;
 	}
+
+	public int getNodeId() {
+		return nodeId;
+	}
+
+	void setNodeId(int nodeId) {
+		this.nodeId = nodeId;
+	}
+	
+	
 
 }

@@ -26,7 +26,7 @@ public class LengthofLongestSubstring {
 		for (String subString : getListOfLongestSubString("abzqbnjklmxd")) {
 
 			System.out.println(subString);
-			
+
 		}
 
 		System.out.println("Below are all Largest sub string for 'zabac'");
@@ -38,53 +38,69 @@ public class LengthofLongestSubstring {
 		for (String subString : getListOfLongestSubString("zabasocac")) {
 			System.out.println(subString);
 		}
-		
-		
+
 		System.out.println(getLenghtOfSubString("zabasocac"));
 		System.out.println(lengthOfLongestSubstring("zabasocac"));
-
-		
+		System.out.println(getLenghtOfSubStringWithList("zabasocac"));
 
 	}
 
-	
 	public static int getLenghtOfSubString(String s) {
 		Queue<Character> queue = new LinkedList<Character>();
-		
-		
-		
+
 		int max = 0;
-		
-		for(Character c : s.toCharArray()) {
-			
-			while(queue.contains(c)) {
+
+		for (Character c : s.toCharArray()) {
+
+			while (queue.contains(c)) {
 				queue.poll();
 			}
 			queue.add(c);
-			
+
 			max = Math.max(max, queue.size());
 		}
-		
+
 		return max;
 	}
-	
-	
+
 	public static int getLenghtOfSubStringWithList(String s) {
 		Queue<Character> queue = new LinkedList<Character>();
-		
+
 		int max = 0;
-		Map<Integer,List<String>> lengthStringList = new HashMap<Integer, List<String>>();
-		for(Character c : s.toCharArray()) {
-			max = Math.max(max, queue.size());
-			while(queue.contains(c)) {
+		Map<Integer, List<LinkedList<Character>>> lengthStringList = new TreeMap<Integer, List<LinkedList<Character>>>();
+		for (Character c : s.toCharArray()) {
+
+			while (queue.contains(c)) {
 				queue.poll();
 			}
 			queue.add(c);
+
+			if (max < queue.size()) {
+
+				max = Math.max(max, queue.size());
+
+				if (lengthStringList.containsKey(max)) {
+					lengthStringList.get(max).add(new LinkedList<>(queue));
+				} else {
+					ArrayList<LinkedList<Character>> list = new ArrayList<>();
+					list.add(new LinkedList<>(queue));
+					lengthStringList.put(max, list);
+				}
+			}
 		}
-		
+
+		for (LinkedList<Character> ll : lengthStringList.get(max)) {
+			StringBuilder sb = new StringBuilder();
+			for (Character c : ll) {
+				sb.append(c);
+			}
+
+			System.out.println(sb.toString());
+		}
+
 		return max;
 	}
-	
+
 	public static int getLength(String s) {
 		int current = 0;
 		int max = 0;
@@ -109,23 +125,22 @@ public class LengthofLongestSubstring {
 		}
 		return max;
 	}
-	
-	 public static int lengthOfLongestSubstring(String s) {
-	        int n = s.length();
-	        Set<Character> set = new HashSet<>();
-	        int ans = 0, i = 0, j = 0;
-	        while (i < n && j < n) {
-	            // try to extend the range [i, j]
-	            if (!set.contains(s.charAt(j))){
-	                set.add(s.charAt(j++));
-	                ans = Math.max(ans, j - i);
-	            }
-	            else {
-	                set.remove(s.charAt(i++));
-	            }
-	        }
-	        return ans;
-	    }
+
+	public static int lengthOfLongestSubstring(String s) {
+		int n = s.length();
+		Set<Character> set = new HashSet<>();
+		int ans = 0, i = 0, j = 0;
+		while (i < n && j < n) {
+			// try to extend the range [i, j]
+			if (!set.contains(s.charAt(j))) {
+				set.add(s.charAt(j++));
+				ans = Math.max(ans, j - i);
+			} else {
+				set.remove(s.charAt(i++));
+			}
+		}
+		return ans;
+	}
 
 	public static List<String> getListOfLongestSubString(String s) {
 		int current = 0;

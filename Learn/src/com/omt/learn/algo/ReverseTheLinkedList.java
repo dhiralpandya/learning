@@ -51,7 +51,7 @@ public class ReverseTheLinkedList {
 
 	}
 
-	private static ListNode createListNode(String data) {
+	public static ListNode createListNode(String data) {
 		String[] array = data.split("->");
 		ListNode listNode = null;
 		for (String digit : array) {

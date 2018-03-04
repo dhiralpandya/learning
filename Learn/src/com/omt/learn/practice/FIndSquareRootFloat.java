@@ -33,6 +33,11 @@ public class FIndSquareRootFloat {
 		System.out.println("Square Root of 25 (Math.sqrt):");
 		System.out.println(Math.sqrt(81));
 
+		System.out.println("Square Root of 277.787 :");
+		System.out.println(squareRoot(277.787));
+		System.out.println("Square Root of 277.787 (Math.sqrt):");
+		System.out.println(Math.sqrt(277.787));
+
 	}
 
 	public static double squareRoot(double number) {

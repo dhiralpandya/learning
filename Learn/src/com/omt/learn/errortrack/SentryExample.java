@@ -1,0 +1,63 @@
+package com.omt.learn.errortrack;
+
+import io.sentry.Sentry;
+import io.sentry.event.BreadcrumbBuilder;
+import io.sentry.event.UserBuilder;
+
+//https://52d10639e1b846e28304953235c92cc2:803d259e092e4014a436409f3b8c5cf2@sentry.io/300180
+
+//https://52d10639e1b846e28304953235c92cc2@sentry.io/300180
+
+public class SentryExample {
+
+	public static void main(String args[]) {
+
+		Sentry.init();
+
+		logWithStaticAPI();
+	}
+
+	/**
+	 * Examples using the (recommended) static API.
+	 */
+	static void logWithStaticAPI() {
+		// Note that all fields set on the context are optional. Context data is copied
+		// onto
+		// all future events in the current context (until the context is cleared).
+
+		// Record a breadcrumb in the current context. By default the last 100
+		// breadcrumbs are kept.
+		Sentry.getContext().recordBreadcrumb(new BreadcrumbBuilder().setMessage("User made an action").build());
+
+		// Set the user in the current context.
+		Sentry.getContext().setUser(new UserBuilder().setEmail("hello@sentry.io").build());
+
+		// Add extra data to future events in this context.
+		Sentry.getContext().addExtra("extra", "thing");
+
+		// Add an additional tag to future events in this context.
+		Sentry.getContext().addTag("tagName", "tagValue");
+
+		/*
+		 * This sends a simple event to Sentry using the statically stored instance that
+		 * was created in the ``main`` method.
+		 */
+		Sentry.capture("This is a test");
+
+		try {
+			unsafeMethod();
+		} catch (Exception e) {
+			// This sends an exception event to Sentry using the statically stored instance
+			// that was created in the ``main`` method.
+			Sentry.capture(e);
+		}
+	}
+
+	/**
+	 * An example method that throws an exception.
+	 */
+	static void unsafeMethod() {
+		throw new UnsupportedOperationException("You shouldn't call this!");
+	}
+
+}

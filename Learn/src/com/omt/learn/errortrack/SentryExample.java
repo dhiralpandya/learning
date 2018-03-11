@@ -13,6 +13,8 @@ public class SentryExample {
 
 	public static void main(String args[]) {
 
+		// See SDK documentation for language specific usage.
+
 		Sentry.init();
 
 		// logWithStaticAPI();

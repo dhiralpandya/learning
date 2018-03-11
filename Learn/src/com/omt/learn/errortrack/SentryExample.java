@@ -7,10 +7,6 @@ import io.sentry.context.Context;
 import io.sentry.event.BreadcrumbBuilder;
 import io.sentry.event.UserBuilder;
 
-//https://52d10639e1b846e28304953235c92cc2:803d259e092e4014a436409f3b8c5cf2@sentry.io/300180
-
-//https://52d10639e1b846e28304953235c92cc2@sentry.io/300180
-
 public class SentryExample {
 
 	public static SentryClient sentry = SentryClientFactory.sentryClient();

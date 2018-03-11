@@ -16,8 +16,8 @@ public class SentryExample {
 		Sentry.init();
 
 		// logWithStaticAPI();
-		// logWithInstanceAPI();
-		logWithCustomErrorAPI();
+		logWithInstanceAPI();
+		// logWithCustomErrorAPI();
 	}
 
 	/**

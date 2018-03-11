@@ -1,6 +1,9 @@
 package com.omt.learn.errortrack;
 
 import io.sentry.Sentry;
+import io.sentry.SentryClient;
+import io.sentry.SentryClientFactory;
+import io.sentry.context.Context;
 import io.sentry.event.BreadcrumbBuilder;
 import io.sentry.event.UserBuilder;
 
@@ -10,11 +13,14 @@ import io.sentry.event.UserBuilder;
 
 public class SentryExample {
 
+	public static SentryClient sentry = SentryClientFactory.sentryClient();
+
 	public static void main(String args[]) {
 
 		Sentry.init();
 
-		logWithStaticAPI();
+		// logWithStaticAPI();
+		logWithInstanceAPI();
 	}
 
 	/**
@@ -58,6 +64,31 @@ public class SentryExample {
 	 */
 	static void unsafeMethod() {
 		throw new UnsupportedOperationException("You shouldn't call this!");
+	}
+
+	/**
+	 * Examples that use the SentryClient instance directly.
+	 */
+	static void logWithInstanceAPI() {
+		// Retrieve the current context.
+		Context context = sentry.getContext();
+
+		// Record a breadcrumb in the current context. By default the last 100
+		// breadcrumbs are kept.
+		context.recordBreadcrumb(new BreadcrumbBuilder().setMessage("User made an action").build());
+
+		// Set the user in the current context.
+		context.setUser(new UserBuilder().setEmail("hello@sentry.io").build());
+
+		// This sends a simple event to Sentry.
+		sentry.sendMessage("This is a test");
+
+		try {
+			unsafeMethod();
+		} catch (Exception e) {
+			// This sends an exception event to Sentry.
+			sentry.sendException(e);
+		}
 	}
 
 }

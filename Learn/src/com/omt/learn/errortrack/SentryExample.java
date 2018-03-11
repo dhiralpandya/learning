@@ -16,7 +16,8 @@ public class SentryExample {
 		Sentry.init();
 
 		// logWithStaticAPI();
-		logWithInstanceAPI();
+		// logWithInstanceAPI();
+		logWithCustomErrorAPI();
 	}
 
 	/**
@@ -66,6 +67,31 @@ public class SentryExample {
 	 * Examples that use the SentryClient instance directly.
 	 */
 	static void logWithInstanceAPI() {
+		// Retrieve the current context.
+		Context context = sentry.getContext();
+
+		// Record a breadcrumb in the current context. By default the last 100
+		// breadcrumbs are kept.
+		context.recordBreadcrumb(new BreadcrumbBuilder().setMessage("Dhiral Pandya").build());
+
+		// Set the user in the current context.
+		context.setUser(new UserBuilder().setEmail("dhp@sentry.io").build());
+
+		// This sends a simple event to Sentry.
+		sentry.sendMessage("This is custom msg");
+
+		try {
+			unsafeMethod();
+		} catch (Exception e) {
+			// This sends an exception event to Sentry.
+			sentry.sendException(e);
+		}
+	}
+
+	/**
+	 * Examples that use the SentryClient instance directly.
+	 */
+	static void logWithCustomErrorAPI() {
 		// Retrieve the current context.
 		Context context = sentry.getContext();
 

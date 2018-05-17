@@ -1,39 +1,60 @@
-package com.omt.learn.algo;
+package com.omt.learn.geekforgeek.greedy;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import com.omt.learn.algo.util.graph.Graph;
 import com.omt.learn.algo.util.graph.Node;
 import com.omt.learn.algo.util.graph.State;
 
-public class FindCycleInGraph {
+public class FindCycleInGraphUnionFind {
 
 	public static void main(String[] args) {
 
-		System.out.println(generateNonLoopGraph().getEdgeCount());
+		System.out.println("Is Cycle Found:" + isCycleInGraph(generateLoopGraph()));
 
-		System.out.println("Is graph contains cycle :" + isGraphContainsCycle(generateLoopGraph()));
-		System.out.println("Is graph contains cycle :" + isGraphContainsCycle(generateNonLoopGraph()));
+		System.out.println("Is Cycle Found:" + isCycleInGraph(generateNonLoopGraph()));
 
 	}
 
-	public static boolean isGraphContainsCycle(Graph graph) {
-
-		for (Node parentNode : graph.getVertices()) {
-
-			parentNode.setState(State.VISITED);
-			int numberOfVisitedChild = 0;
-			for (Node childNode : parentNode.getAdjacent()) {
-				if (childNode.isVisited()) {
-					if (numberOfVisitedChild == 0) {
-						numberOfVisitedChild++;
-					} else {
+	public static boolean isCycleInGraph(Graph graph) {
+		Map<Node, Node> subSet = new HashMap<Node, Node>();
+		for (Node n : graph.getVertices()) {
+			if (n.getAdjacent() != null && !n.getAdjacent().isEmpty()) {
+				n.setState(State.VISITED);
+				for (Node to : n.getAdjacent()) {
+					if (to.isVisited()) {
+						continue;
+					}
+					Node n1 = find(subSet, n);
+					Node n2 = find(subSet, to);
+					if (n1 == n2) {
+						prettyPrintMap(subSet);
 						return true;
+					} else {
+						union(subSet, n, to);
 					}
 				}
 			}
+		}
+		prettyPrintMap(subSet);
+		return false;
+	}
 
+	public static Node find(Map<Node, Node> subSet, Node n) {
+
+		if (subSet.get(n) == null) {
+			return n;
 		}
 
-		return false;
+		return find(subSet, subSet.get(n));
+	}
+
+	public static void union(Map<Node, Node> subSet, Node from, Node to) {
+		Node n1 = find(subSet, from);
+		Node n2 = find(subSet, to);
+
+		subSet.put(n1, n2);
 	}
 
 	public static Graph generateLoopGraph() {
@@ -143,4 +164,9 @@ public class FindCycleInGraph {
 
 	}
 
+	public static void prettyPrintMap(Map<Node, Node> subSet) {
+		for (Node key : subSet.keySet()) {
+			System.out.println(key.getVertex() + "->" + subSet.get(key).getVertex());
+		}
+	}
 }

@@ -1,7 +1,9 @@
 package com.omt.learn.algo.util.graph;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Node {
 
@@ -9,13 +11,19 @@ public class Node {
 	private String vertex = "";
 	private int nodeId = -1;
 	private State state = State.UNVISITED;
+	private Set<Edge> edges = new HashSet<>();
 
 	public Node(String vertex) {
 		this.vertex = vertex;
 	}
 
 	public void addAdjacent(Node node) {
+		edges.add(new Edge(this, node));
 		adjacent.add(node);
+	}
+
+	public Set<Edge> getEdges() {
+		return edges;
 	}
 
 	public boolean isVisited() {
@@ -53,7 +61,5 @@ public class Node {
 	void setNodeId(int nodeId) {
 		this.nodeId = nodeId;
 	}
-	
-	
 
 }

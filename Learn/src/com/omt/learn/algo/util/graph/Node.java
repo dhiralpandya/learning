@@ -15,6 +15,7 @@ public class Node {
 
 	public Node(String vertex) {
 		this.vertex = vertex;
+		setNodeId(vertex.hashCode());
 	}
 
 	public void addAdjacent(Node node) {
@@ -58,7 +59,7 @@ public class Node {
 		return nodeId;
 	}
 
-	void setNodeId(int nodeId) {
+	public void setNodeId(int nodeId) {
 		this.nodeId = nodeId;
 	}
 

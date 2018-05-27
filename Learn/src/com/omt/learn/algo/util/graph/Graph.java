@@ -11,7 +11,6 @@ public class Graph {
 	private List<Node> vertices = new ArrayList<>();
 
 	public void addVertex(Node node) {
-		node.setNodeId(vertices.size());
 		vertices.add(node);
 	}
 

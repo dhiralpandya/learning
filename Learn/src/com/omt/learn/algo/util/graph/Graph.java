@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.TreeSet;
 
 public class Graph {
 
@@ -19,22 +18,15 @@ public class Graph {
 	}
 
 	public int getEdgeCount() {
+		return getEdges().size();
+	}
+
+	public Set<Edge> getEdges() {
 		Set<Edge> totalEdges = new HashSet<>();
 		for (Node n : vertices) {
 			totalEdges.addAll(n.getEdges());
 		}
-		return totalEdges.size();
-	}
-
-	public boolean isThereALoopInGraph() {
-
-		Set<Node> nodes = new TreeSet<>();
-
-		for (Node n : vertices) {
-			int count = 0;
-		}
-
-		return false;
+		return totalEdges;
 	}
 
 }

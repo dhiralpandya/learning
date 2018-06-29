@@ -1,9 +1,10 @@
 package com.omt.learn.algo.util.graph;
 
-public class Edge {
+public class Edge implements Comparable<Edge> {
 
 	private Node from;
 	private Node to;
+	private int weight = 0;
 
 	public Edge(Node from, Node to) {
 		this.from = from;
@@ -33,6 +34,22 @@ public class Edge {
 
 	public Node getTo() {
 		return to;
+	}
+
+	public int getWeight() {
+		return weight;
+	}
+
+	public void setWeight(int weight) {
+		this.weight = weight;
+	}
+
+	@Override
+	public int compareTo(Edge o) {
+		if (this.weight == 0 || o.weight == 0) {
+			return this.hashCode() - o.hashCode();
+		}
+		return this.weight - o.weight;
 	}
 
 }

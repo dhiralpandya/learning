@@ -19,7 +19,9 @@ public class Node {
 	}
 
 	public void addAdjacent(Node node) {
-		edges.add(new Edge(this, node));
+		Edge e = new Edge(this, node);
+		e.setWeight(this.getNodeId() + node.getNodeId());
+		edges.add(e);
 		adjacent.add(node);
 	}
 

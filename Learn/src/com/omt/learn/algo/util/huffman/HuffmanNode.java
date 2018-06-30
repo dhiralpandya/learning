@@ -3,7 +3,7 @@ package com.omt.learn.algo.util.huffman;
 public class HuffmanNode implements Comparable<HuffmanNode> {
 
 	public int frequency = 0;
-	public char c;
+	public char c;// Default Value is u0000
 	public boolean isInternalNode = false;
 	public HuffmanNode left = null;
 	public HuffmanNode right = null;

@@ -88,7 +88,6 @@ public class MSP {
 		g.setNodeId(7);
 		Node h = new Node("H"); // 7
 		h.setNodeId(6);
-		// Node i = new Node("I"); // 8
 
 		a.addAdjacent(b);
 		a.addAdjacent(c);
@@ -124,60 +123,6 @@ public class MSP {
 		graph.addVertex(f);
 		graph.addVertex(g);
 		graph.addVertex(h);
-		// graph.addVertex(i);
-
-		return graph;
-
-	}
-
-	public static Graph generateNonLoopGraph() {
-
-		Graph graph = new Graph();
-
-		Node a = new Node("A"); // 0
-		Node b = new Node("B"); // 1
-		Node c = new Node("C"); // 2
-		Node d = new Node("D"); // 3
-		Node e = new Node("E"); // 4
-		Node f = new Node("F"); // 5
-		Node g = new Node("G"); // 6
-		Node h = new Node("H"); // 7
-		Node i = new Node("I"); // 8
-
-		a.addAdjacent(b);
-		a.addAdjacent(c);
-
-		b.addAdjacent(d);
-		b.addAdjacent(a);
-
-		d.addAdjacent(b);
-		d.addAdjacent(f);
-
-		e.addAdjacent(i);
-		e.addAdjacent(g);
-
-		f.addAdjacent(d);
-		f.addAdjacent(g);
-
-		g.addAdjacent(e);
-		g.addAdjacent(f);
-
-		c.addAdjacent(a);
-		c.addAdjacent(h);
-
-		h.addAdjacent(c);
-
-		i.addAdjacent(e);
-
-		graph.addVertex(a);
-		graph.addVertex(b);
-		graph.addVertex(c);
-		graph.addVertex(h);
-		graph.addVertex(d);
-		graph.addVertex(f);
-		graph.addVertex(g);
-		graph.addVertex(e);
-		graph.addVertex(i);
 
 		return graph;
 

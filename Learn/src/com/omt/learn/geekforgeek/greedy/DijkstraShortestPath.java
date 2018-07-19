@@ -51,15 +51,23 @@ public class DijkstraShortestPath {
 				// One of from or to nodes must visited previously. So taking distance from
 				// there and adding it to other node
 				if (nextEdge.getFrom().isUnvisited()) {
+
 					nextEdge.getFrom().setState(State.VISITED);
+
 					nodeWithDistance.put(nextEdge.getFrom(),
 							nodeWithDistance.get(nextEdge.getTo()) + nextEdge.getWeight());
+					// Add next edges
 					nextSmallestEdge.addAll(nextEdge.getFrom().getEdges());
+
 				} else if (nextEdge.getTo().isUnvisited()) {
+
 					nextEdge.getTo().setState(State.VISITED);
+
 					nodeWithDistance.put(nextEdge.getTo(),
 							nodeWithDistance.get(nextEdge.getFrom()) + nextEdge.getWeight());
+					// Add next edges
 					nextSmallestEdge.addAll(nextEdge.getTo().getEdges());
+
 				}
 
 				selectedEdges.add(nextEdge);

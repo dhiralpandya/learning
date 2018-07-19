@@ -3,8 +3,8 @@ package com.omt.learn.geekforgeek.greedy;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.Map;
+import java.util.TreeMap;
 
 import com.omt.learn.algo.util.job.JobSequence;
 
@@ -22,20 +22,23 @@ public class JobSequencingProblem {
 		Collections.sort(jobSequences, Collections.reverseOrder());
 
 		StringBuilder result = new StringBuilder();
-		Set<Integer> positions = new TreeSet<>();
+		Map<Integer, JobSequence> positions = new TreeMap<>();
 
 		for (JobSequence jobSequence : jobSequences) {
 			int position = jobSequence.getDeadline();
 
 			while (position > 0) {
 				position--;
-				if (!positions.contains(position)) {
-					result.append(jobSequence.getJobId() + ",");
-					positions.add(position);
+				if (!positions.containsKey(position)) {
+					positions.put(position, jobSequence);
 					break;
 				}
 			}
 
+		}
+
+		for (Integer position : positions.keySet()) {
+			result.append(positions.get(position).getJobId() + ",");
 		}
 
 		System.out.println(result.toString());

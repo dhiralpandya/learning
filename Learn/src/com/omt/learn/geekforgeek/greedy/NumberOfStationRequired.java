@@ -9,6 +9,17 @@ import java.util.TreeMap;
 
 public class NumberOfStationRequired {
 
+    private static class Schedule {
+        float arrivalTime = -1;
+        float departureTime = -1;
+
+        public Schedule(float at, float dt) {
+            this.arrivalTime = at;
+            this.departureTime = dt;
+        }
+
+    }
+
     public static void main(String args[]) {
 
         List<Schedule> allTrains = new ArrayList<>();
@@ -54,18 +65,6 @@ public class NumberOfStationRequired {
         }
 
         return totalStations;
-    }
-
-
-    private static class Schedule {
-        float arrivalTime = -1;
-        float departureTime = -1;
-
-        public Schedule(float at, float dt) {
-            this.arrivalTime = at;
-            this.departureTime = dt;
-        }
-
     }
 
 }

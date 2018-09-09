@@ -20,6 +20,13 @@ public class LIS3 {
         int d[] = {10, 22, 9, 33, 21, 50, 41, 60, 80};
         System.out.println(lis(d));
 
+
+        int f[] = {0, 8, 4, 12, 2, 10};
+        System.out.println(lis(f));
+
+        int e[] = {0, 8, 4, 12, 2, 10, 6, 14, 1, 9, 5, 13, 3, 11, 7, 15};
+        System.out.println(lis(e));
+
     }
 
     private static int lis(int a[]) {

@@ -4,20 +4,41 @@ public class LIS {
 
 
     private static long startTime = 0;
+    private static long MAX_LIS = 0;
 
     public static void main(String args[]) {
         setStartTime();
         int a[] = {3, 10, 2, 1, 20};
-        System.out.println(lis(a, 0));
+        MAX_LIS = 0;
+        lis(a, 0);
+        System.out.println(MAX_LIS);
 
         int b[] = {3, 2};
-        System.out.println(lis(b, 0));
+        MAX_LIS = 0;
+        lis(b, 0);
+        System.out.println(MAX_LIS);
 
         int c[] = {50, 3, 10, 7, 40, 80};
-        System.out.println(lis(c, 0));
+        MAX_LIS = 0;
+        lis(c, 0);
+        System.out.println(MAX_LIS);
 
         int d[] = {10, 22, 9, 33, 21, 50, 41, 60, 80};
-        System.out.println(lis(d, 0));
+        MAX_LIS = 0;
+        lis(d, 0);
+        System.out.println(MAX_LIS);
+
+
+        int e[] = {0, 8, 4, 12, 2, 10};
+        MAX_LIS = 0;
+        lis(e, 0);
+        System.out.println(MAX_LIS);
+
+        int f[] = {0, 8, 4, 12, 2, 10, 6, 14, 1, 9, 5, 13, 3, 11, 7, 15};
+        MAX_LIS = 0;
+        lis(f, 0);
+        System.out.println(MAX_LIS);
+
         calculateEndTime();
     }
 
@@ -39,13 +60,15 @@ public class LIS {
             //Take start element and compare with all next selections.
             if (a[start] < a[index]) {
                 tempLIS++; //Increase If start is less than neighbor
+
+                if (tempLIS > maxLIS) {//If tempLIS is greater than MaxLis
+                    maxLIS = tempLIS;
+                }
             }
 
-            if (tempLIS > maxLIS) {//If tempLIS is greater than MaxLis
-                maxLIS = tempLIS;
-            }
+
         }
-
+        MAX_LIS = MAX_LIS < maxLIS ? maxLIS : MAX_LIS;
         return maxLIS;
     }
 

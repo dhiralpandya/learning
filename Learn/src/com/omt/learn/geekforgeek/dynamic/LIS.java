@@ -61,7 +61,7 @@ public class LIS {
             if (a[start] < a[index]) {
                 tempLIS++; //Increase If start is less than neighbor
 
-                //This if inside above if {0, 8, 4, 12, 2, 10}
+                //Calculation of current element  maxLIS for current index. This if inside above if {0, 8, 4, 12, 2, 10}
                 if (tempLIS > maxLIS) {//If tempLIS is greater than MaxLis
                     maxLIS = tempLIS;
                 }

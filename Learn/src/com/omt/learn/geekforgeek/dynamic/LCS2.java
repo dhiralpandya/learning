@@ -31,7 +31,7 @@ public class LCS2 {
                 }
             }
         }
-
+        printMatrix(lcs);
 
         for (int i = 1; i < p.length(); i++) {
             for (int j = 0; j < q.length(); j++) {

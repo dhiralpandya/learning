@@ -7,15 +7,18 @@ public class MobileNumericKeypadProblem {
 
     public static void main(String args[]) {
         //OMT
-        char keypad[][] = {{'1','2','3'},
-                           {'4','5','6'},
-                           {'7','8','9'},
-                           {'*','0','#'}};
-        
-        System.out.println(maxCount(1,keypad));
-        System.out.println(maxCount(2,keypad));
-       
-        
+        char keypad[][] = { {'1', '2', '3'},
+                            {'4', '5', '6'},
+                            {'7', '8', '9'},
+                            {'*', '0', '#'}};
+
+        System.out.println(maxCount(1, keypad));
+        System.out.println(maxCount(2, keypad));
+        System.out.println(maxCount(3, keypad));
+        System.out.println(maxCount(4, keypad));
+        System.out.println(maxCount(5, keypad));
+
+
     }
 
 
@@ -33,7 +36,8 @@ public class MobileNumericKeypadProblem {
         //Count at each key
         for (int row = 0; row < keypad.length; row++) {
             for (int column = 0; column < keypad[0].length; column++) {
-                totalCount += countFromParticularBoxToUpDownLeftRight(row, column, n, keypad);
+                int countForCurrentBox = countFromParticularBoxToUpDownLeftRight(row, column, n, keypad); 
+                totalCount += countForCurrentBox;
             }
         }
 
@@ -43,27 +47,32 @@ public class MobileNumericKeypadProblem {
 
     public static int countFromParticularBoxToUpDownLeftRight(int row, int column, int numberOfMoveLeft,
                                                               char[][] keypad) {
-        if (numberOfMoveLeft <= 0) {
+
+        if (!isValidBox(row, column, keypad)) {
             return 0;
-        } else if (!isValidBox(row, column, keypad)) {
+        } else if (numberOfMoveLeft <= 0) {
             return 0;
+        } 
+        else if(numberOfMoveLeft == 1) {
+            return 1;
         }
 
-        int currentCount = 1;//One for current box.
+        //int currentCount = 1;//One for current box.
 
         int leftCount = countFromParticularBoxToUpDownLeftRight(row, column - 1, numberOfMoveLeft - 1, keypad);
         int rightCount = countFromParticularBoxToUpDownLeftRight(row, column + 1, numberOfMoveLeft - 1, keypad);
         int upCount = countFromParticularBoxToUpDownLeftRight(row - 1, column, numberOfMoveLeft - 1, keypad);
         int downCount = countFromParticularBoxToUpDownLeftRight(row + 1, column, numberOfMoveLeft - 1, keypad);
-
-        int totalCount = currentCount + leftCount + rightCount + upCount + downCount;
+        int selectCurrentElementAgain = countFromParticularBoxToUpDownLeftRight(row, column, numberOfMoveLeft - 1, keypad);
+                
+        int totalCount = selectCurrentElementAgain + leftCount + rightCount + upCount + downCount;
         return totalCount;
     }
 
     public static boolean isValidBox(int row, int column, char[][] keypad) {
         int maxRow = keypad.length;
         int maxColumn = keypad[0].length;
-        
+
         if (row >= maxRow || column >= maxColumn || row < 0 || column < 0) {
             return false;
         }

@@ -17,7 +17,7 @@ public class MSP {
 			System.out.println(e.getTo().getVertex() + "---" + e.getFrom().getVertex() + ":" + e.getWeight());
 		}
 	}
-
+//Janu
 	private static List<Edge> getMSPEdgeList(Graph g) {
 
 		List<Edge> selectedEdge = new ArrayList<>();

@@ -1,5 +1,7 @@
-package com.omt.learn.leetcode.google;
+package com.omt.learn.leetcode.google.test;
 
+import com.omt.learn.leetcode.google.SentenceSimilarityII737;
+import org.junit.Assert;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -20,7 +22,7 @@ public class Test737 {
                 {"acting", "drama"},
                 {"skills", "talent"}
         };
-        assertEquals(true, SentenceSimilarityII737.isBothAreSame(words1, words2, pairs));
+        Assert.assertEquals(true, SentenceSimilarityII737.isBothAreSame(words1, words2, pairs));
     }
 
     @Test

@@ -5,7 +5,7 @@ import com.google.common.collect.Sets;
 import java.util.LinkedList;
 import java.util.Set;
 
-public class AddBoldTagInString {
+public class AddBoldTagInString616 {
 
     public static void main(String args[]) {
         String s = "abcxyz123";
